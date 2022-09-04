@@ -1,5 +1,5 @@
-from compute_entropy import compute_entropy
-from split_data import split_dataset
+from decision_tree_algorithm import compute_entropy as entropy
+from decision_tree_algorithm import split_data
 
 
 def compute_information_gain(X, y, node_indices, feature):
@@ -16,7 +16,7 @@ def compute_information_gain(X, y, node_indices, feature):
 
     """
     # Split dataset
-    left_indices, right_indices = split_dataset(X, node_indices, feature)
+    left_indices, right_indices = split_data.split_dataset(X, node_indices, feature)
 
     # Some useful variables
     X_node, y_node = X[node_indices], y[node_indices]
@@ -25,9 +25,9 @@ def compute_information_gain(X, y, node_indices, feature):
 
     information_gain = 0
 
-    root_entropy = compute_entropy(y_node)
-    left_entropy = compute_entropy(y_left)
-    right_entropy = compute_entropy(y_right)
+    root_entropy = entropy.compute_entropy(y_node)
+    left_entropy = entropy.compute_entropy(y_left)
+    right_entropy = entropy.compute_entropy(y_right)
 
     p_right = len(y_right) / len(y_node)
     p_left = len(y_left) / len(y_node)

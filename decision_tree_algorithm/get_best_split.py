@@ -1,4 +1,4 @@
-from compute_information_gain import compute_information_gain
+from decision_tree_algorithm import compute_information_gain as info_gain
 
 
 def get_best_split(X, y, node_indices):
@@ -23,7 +23,7 @@ def get_best_split(X, y, node_indices):
     max_info_gain = 0
 
     for i in range(num_features):
-        info_gain_i = compute_information_gain(X, y, node_indices, feature=i)
+        info_gain_i = info_gain.compute_information_gain(X, y, node_indices, feature=i)
 
         if info_gain_i > max_info_gain:
             max_info_gain = info_gain_i
